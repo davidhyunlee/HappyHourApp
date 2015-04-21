@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+
+    <div class="ui input"><%= f.label :email %> - <%= f.text_field :email %></div>
+    <div class="ui input"><%= f.label :password %> - <%= f.password_field :password %></div>
+    <div class="ui input"><%= f.label :password_confirmation %> - <%= f.password_field :password_confirmation %></div>
+
+    <%= f.submit "Create Account", class: "ui button" %>
+    
+<% end -%>
