@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150421081050) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "reviews", force: :cascade do |t|
     t.string   "body"
     t.float    "rating"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150421081050) do
     t.integer  "user_id"
   end
 
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -39,4 +42,5 @@ ActiveRecord::Schema.define(version: 20150421081050) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "reviews", "users"
 end
