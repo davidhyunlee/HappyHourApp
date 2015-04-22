@@ -1,17 +1,18 @@
 <%= form_for @user do |f| %>
 
-		<%= f.label :first_name %><%= f.text_field :first_name %>
-		<%= f.label :last_name %><%= f.text_field :last_name %>
-		<%= f.label :username %><%= f.text_field :username %>
-		<%= f.label :location %><%= f.text_field :location %>
-		<%= f.label :hometown %><%= f.text_field :hometown %>
-		<%= f.label :nickname %><%= f.text_field :nickname %>
-		<%= f.label :headline %><%= f.text_field :headline %>
-		<%= f.label :website %><%= f.text_field :website %>
-		<%= f.label :password %><%= f.text_field :password %>
-		<%= f.label :password_confirmation %><%= f.text_field :password_confirmation %>
+		<%= f.label :first_name, class: "ui input" %><%= f.text_field :first_name, class: "ui input" %>
+		<%= f.label :last_name, class: "ui input"  %><%= f.text_field :last_name, class: "ui input"  %>
+		<%= f.label :username, class: "ui input"  %><%= f.text_field :username, class: "ui input"  %>
+		<%= f.label :location, class: "ui input"  %><%= f.text_field :location, class: "ui input"  %>
+		<%= f.label :hometown, class: "ui input"  %><%= f.text_field :hometown, class: "ui input"  %>
+		<%= f.label :nickname, class: "ui input"  %><%= f.text_field :nickname, class: "ui input"  %>
+		<%= f.label :headline, class: "ui input"  %><%= f.text_field :headline, class: "ui input"  %>
+		<%= f.label :website, class: "ui input"  %><%= f.text_field :website, class: "ui input"  %>
+		<%= f.label :photo, class: "ui input"  %><%= f.file_field :photo, class: "ui input"  %>
+		<%= f.label :password, class: "ui input"  %><%= f.text_field :password, class: "ui input"  %>
+		<%= f.label :password_confirmation, class: "ui input"  %><%= f.text_field :password_confirmation, class: "ui input"  %>
 
-	<%= f.submit "Update Profile" %>
+	<%= f.submit "Update Profile", class: "ui input" %>
 
 <% end %>
 

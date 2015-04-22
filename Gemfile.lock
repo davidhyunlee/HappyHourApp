@@ -159,11 +159,9 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
-    foundation-rails (5.5.1.2)
-      railties (>= 3.1.0)
-      sass (>= 3.3.0, < 3.5)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    hashie (3.4.1)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -193,6 +191,9 @@ GEM
     net-ssh (2.9.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
     pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -285,11 +286,11 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   figaro
   fog
-  foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
   mini_magick
+  omniauth
   pg
   pry-rails
   rails (= 4.2.1)

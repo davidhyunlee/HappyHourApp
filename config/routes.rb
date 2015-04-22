@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-
+  
   root 'pages#index'
+
+  get 'businesses/index'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#post'
