@@ -1,7 +1,15 @@
 <%= render 'users/menu_bar' %>
-<%= image_tag @user.photo.url if @user.photo? %>
-<%= @user.first_name %> <%= @user.last_name %>
-<%= @user.username %>
+
+<div class="ui grid">
+  <div class="sixteen wide column borderit">
+    <%= image_tag @user.photo.url, class: "ui image" if @user.photo? %>
+    <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+  </div>
+</div>
+
+<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<div class="meta"><a class="time"><%= @user.username %></a></div>
+
 <%= @user.hometown %>
 <%= @user.nickname %>
 <%= @user.headline %>
