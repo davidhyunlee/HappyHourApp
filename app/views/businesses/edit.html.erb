@@ -1,0 +1,15 @@
+<%= form_for @business do |f| %>
+
+<%= f.text_field :name, class: "ui input" %>
+<%= f.text_field :address, class: "ui input"  %>
+<%= f.text_field :address_2, class: "ui input"  %>
+<%= f.text_field :city, class: "ui input"  %>
+<%= f.text_field :state, class: "ui input"  %>
+<%= f.text_field :zip, class: "ui input"  %>
+<%= f.file_field :photo, class: "ui input"  %>
+
+	<%= f.submit "Update Business", class: "ui input" %>
+
+<% end %>
+
+

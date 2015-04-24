@@ -1,4 +1,46 @@
 class BusinessesController < ApplicationController
-  def index
-  end
+	def new
+		@business = Business.new
+	end
+
+	def create
+		@business = Business.new(business_params)
+
+		if @business.save
+			flash[:success] = "You've successfully added your business."
+			redirect_to('/')
+		else
+			flash[:failure] = "Something went wrong. Your business wasn't created."
+			redirect_to('/')
+		end
+	end
+
+	def show
+		@business = Business.find(params[:id])
+		@review = @business.reviews.new
+		@user = User.find_by_id(@business.reviews)
+	end
+
+	def edit
+		@business = Business.find(params[:id])
+	end
+
+	def update
+		@user = User.find(params[:id])
+
+		if @user.update_attributes(userprofile_params)
+			redirect_to('/')
+		else
+			render edit
+		end
+	end
+
+	private
+		def business_params
+			params.require(:business).permit(:name, :address, :address_2, :city, :state, :zip, :phone)
+		end
+
+		def userprofile_params
+			params.require(:user).permit(:first_name, :last_name, :email, :username, :location, :hometown, :nickname, :photo, :headline, :website, :password, :password_confirmation)
+		end
 end

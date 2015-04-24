@@ -8,6 +8,7 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :state
       t.string :zip
       t.string :phone
+      t.string :website
 
       t.timestamps null: false
     end

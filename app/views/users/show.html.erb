@@ -1,5 +1,29 @@
-<div class="ui row">
-<p><%= @user.first_name %></p>
-<%= @user.last_name %>
+<%= render 'users/menu_bar' %>
+<%= image_tag @user.photo.url if @user.photo? %>
+<%= @user.first_name %> <%= @user.last_name %>
+<%= @user.username %>
+<%= @user.hometown %>
+<%= @user.nickname %>
+<%= @user.headline %>
+<%= @user.website %>
+
+<button class="test">Press Me</button>
+
+<div class="ui modal">
+ <i class="close icon"></i>
+ <div class="header">
+   Modal Title
+ </div>
+ <div class="content">
+   <div class="image">
+     An image can appear on left or an icon
+   </div>
+   <div class="description">
+     A description can appear on the right
+   </div>
+ </div>
+ <div class="actions">
+   <div class="ui button">Cancel</div>
+   <div class="ui button">OK</div>
+ </div>
 </div>
-<%= image_tag @user.photo.url %><p><%= @user.last_name %></p>

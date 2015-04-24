@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ProfileUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process resize_to_limit: [325, 325]
   # Include RMagick or MiniMagick support:

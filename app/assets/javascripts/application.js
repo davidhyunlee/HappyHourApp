@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require semantic-ui
 //= require turbolinks
 //= require_tree .
-//= require semantic-ui
+
+  $('.ui.modal').modal('attach events', '.test', 'show');
