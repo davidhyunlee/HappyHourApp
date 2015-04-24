@@ -33,25 +33,15 @@ class BusinessesController < ApplicationController
 
 	def edit
 		@business = Business.find(params[:id])
-		@hours = @business.hours
+		# @hours = Hour.new unless Hour.exists?(business_id: @business.id) do Hour.new end
+		@hours = if Hour.exists?(business_id: @business.id) do Hour.find_by_business_id(@business.id) else Hour.new end
 	end
 
 	def update
-		@user = User.find(params[:id])
-
-		if @user.update_attributes(userprofile_params)
-			redirect_to('/')
-		else
-			render edit
-		end
 	end
 
 	private
 		def business_params
 			params.require(:business).permit(:name, :address, :address_2, :city, :state, :zip, :phone)
-		end
-
-		def userprofile_params
-			params.require(:user).permit(:first_name, :last_name, :email, :username, :location, :hometown, :nickname, :photo, :headline, :website, :password, :password_confirmation)
 		end
 end

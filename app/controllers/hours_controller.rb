@@ -1,7 +1,25 @@
 class HoursController < ApplicationController
+  def index
+  end
+
+  def create
+    # render plain: params
+
+    @hour = Hour.new(hour_params)
+    @hour.business_id = params[:business_id]
+
+    if @hour.save
+      flash[:success] = "You've successfully added your business hours."
+      redirect_to('/')
+    else
+      flash[:failure] = "Something went wrong. Your business hours weren't created."
+      redirect_to('/')
+    end
+  end
+
   def update
-    business = Business.find(params[:business_id])
-    @hour = business.hour
+    business = Business.find(params[:id])
+    @hour = Hour.find_by_business_id(business.id)
 
     if @hour.update_attributes(hour_params)
       redirect_to('/')

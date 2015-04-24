@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :users, :businesses do
-    resources :comments, :reviews, :photos, :hour
+    resources :comments, :reviews, :photos, :hours
   end
 
   get '/test' => 'pages#test'

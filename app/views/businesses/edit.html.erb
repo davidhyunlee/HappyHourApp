@@ -130,13 +130,10 @@
 <% end %>
 
 
-      <%= form_for [@business, @business.hour] do |f| %>
-                <div class="form-group">
-                f.collection_select(:category_id, Category.all, :id, :name, prompt: true)
-
-                <%= hidden_field_tag :business_id, @business.id %>
-                <%= hidden_field_tag :hour, @business.hour %>
-        <%= submit_tag "Update", class: "btn btn-primary" %>
+      <%= form_for [@business, @hours] do |f| %>
+   
+            Monday Opening Time: <%= f.text_field :mon_open %>
+            <%= f.submit "Update Business Hours" %>
 
       <% end %>
 
