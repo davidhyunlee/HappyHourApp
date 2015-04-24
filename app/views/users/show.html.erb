@@ -1,21 +1,32 @@
 <%= render 'users/menu_bar' %>
 
 <div class="ui grid">
-  <div class="sixteen wide column borderit">
-    <%= image_tag @user.photo.url, class: "ui image" if @user.photo? %>
-    <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+  <div class="sixteen wide column">
+    <%= image_tag @user.photo.url, class: "ui left floated image" if @user.photo? %>
+    <h1 class="normalize"><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+    <span class="subheading"><%= @user.username %>: <i>"<%= @user.headline %>"</i></span>
+
+    <strong>Nickname:</strong>
+    <p><%= @user.nickname %></p>
+    
+    <strong>Website:</strong>
+    <p><%= link_to @user.website, @user.website %></p>    
+
+    <strong>Current Location:</strong>
+    <p><%= @user.location %></p>    
+
+    <strong>Hometown:</strong>
+    <p><%= @user.hometown %></p>
+
   </div>
 </div>
 
-<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-<div class="meta"><a class="time"><%= @user.username %></a></div>
 
-<%= @user.hometown %>
-<%= @user.nickname %>
-<%= @user.headline %>
-<%= @user.website %>
+
 
 <button class="test">Press Me</button>
+
+
 
 <div class="ui modal">
  <i class="close icon"></i>

@@ -1,3 +1,7 @@
+
+
+<hr>
+
 <%= @business.name %>
 <%= @business.address %>
 <%= @business.address_2 %>
@@ -5,9 +9,21 @@
 <%= @business.state %>
 <%= @business.zip %>
 
+<%= image_tag @business.photos[@business.photos.length-2].photo.url %>
+
+<%= @business.photos %>
+
+<%= form_for [@business, Photo.new] do |f| %>
+  <label>Photo:</label> <%= f.file_field :photo %>
+  Caption: <%= f.text_field :caption %>
+  <%= f.submit "Add Photo" %>
+<% end %>
+
 
 <%= form_for ([@business, @review]) do |f| %>
 
+  <%= f.text_field :title %>
+  <%= f.text_field :rating %>
 	<%= f.text_area :body %>
 	<%= f.submit "Add Review", class: "tiny button radius" %>
 
@@ -15,10 +31,10 @@
 
 <% @business.reviews.each do |review| %>
 
+  <%= review.title %>
   <%= simple_format(review.body) %>
-  <%= review.created_at %>
-  <%= time_ago_in_words(review.created_at) unless review.created_at.blank? %>
-  <%= User.find(review.user_id.to_i).first_name unless review.user_id.to_i == 0 %>
+  <%= time_ago_in_words(review.created_at) + " ago." unless review.created_at.blank? %>
+  <%= "#{User.find(review.user_id.to_i).first_name} #{User.find(review.user_id.to_i).last_name}" unless review.user_id.to_i == 0 %>
 
 <% end %>
 

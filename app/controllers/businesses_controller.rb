@@ -18,6 +18,7 @@ class BusinessesController < ApplicationController
 	def show
 		@business = Business.find(params[:id])
 		@review = @business.reviews.new
+		@photo = @business.photos.new
 		@user = User.find_by_id(@business.reviews)
 	end
 

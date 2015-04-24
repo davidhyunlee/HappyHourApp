@@ -50,9 +50,9 @@ body {
   margin: 0 auto 15px;
   border: 1px solid darkgray;
   background: #fff;
--webkit-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
--moz-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
 }
 
 .logo {
@@ -68,6 +68,18 @@ box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
   margin: 10px 0 0 0;
 }
 
+.subheading {
+  margin-top: -5px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  display: block;
+}
+
 .borderit {
   border: 1px dotted black;
+}
+
+.normalize {
+  padding: 0;
+  margin: 0;
 }
