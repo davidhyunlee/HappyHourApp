@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423215900) do
+ActiveRecord::Schema.define(version: 20150424114656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,42 @@ ActiveRecord::Schema.define(version: 20150423215900) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "hours", force: :cascade do |t|
+    t.time     "mon_open"
+    t.time     "tue_open"
+    t.time     "wed_open"
+    t.time     "thu_open"
+    t.time     "fri_open"
+    t.time     "sat_open"
+    t.time     "sun_open"
+    t.time     "mon_close"
+    t.time     "tue_close"
+    t.time     "wed_close"
+    t.time     "thu_close"
+    t.time     "fri_close"
+    t.time     "sat_close"
+    t.time     "sun_close"
+    t.time     "mon_start"
+    t.time     "tue_start"
+    t.time     "wed_start"
+    t.time     "thu_start"
+    t.time     "fri_start"
+    t.time     "sat_start"
+    t.time     "sun_start"
+    t.time     "mon_end"
+    t.time     "tue_end"
+    t.time     "wed_end"
+    t.time     "thu_end"
+    t.time     "fri_end"
+    t.time     "sat_end"
+    t.time     "sun_end"
+    t.integer  "business_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "hours", ["business_id"], name: "index_hours_on_business_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "photo"
@@ -70,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150423215900) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "hours", "businesses"
   add_foreign_key "photos", "businesses"
   add_foreign_key "photos", "users"
   add_foreign_key "reviews", "businesses"

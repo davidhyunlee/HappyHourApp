@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
+  get '/test' => 'pages#test'
+
   get 'businesses/index'
 
   get '/signup' => 'users#new'

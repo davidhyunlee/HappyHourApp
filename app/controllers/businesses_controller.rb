@@ -16,6 +16,11 @@ class BusinessesController < ApplicationController
 	end
 
 	def show
+		# Google Maps API
+		url = "https://maps.googleapis.com/maps/api/js?key="
+  	key = ENV['GOOGLE_MAPS']
+  	@endpoint = url + key
+
 		@business = Business.find(params[:id])
 		@review = @business.reviews.new
 		@photo = @business.photos.new

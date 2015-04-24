@@ -17,3 +17,15 @@
 //= require_tree .
 
   $('.ui.modal').modal('attach events', '.test', 'show');
+
+$('select.dropdown')
+  .dropdown()
+;
+
+$('.ui.checkbox')
+  .checkbox()
+;
+
+$('.ui.radio.checkbox')
+  .checkbox()
+;

@@ -79,6 +79,11 @@ body {
   width: 325px;
   height: 325px;
   border: 1px solid black;
+  display: table-cell;
+  vertical-align: middle;
+  overflow: hidden;
+  background: #000;
+  float: left;
 }
 
 .business_detail_column {
@@ -94,4 +99,9 @@ body {
 .normalize {
   padding: 0;
   margin: 0;
+}
+
+#map-canvas {
+  height: 250px;
+  width: 250px;
 }
