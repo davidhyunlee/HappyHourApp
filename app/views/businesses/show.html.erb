@@ -1,23 +1,58 @@
-
+<div class="ui grid">
+  <div class="six wide column">
+    <div class="photo_business"><%= image_tag @business.photos[@business.photos.length-2].photo.url %></div>
+  </div>
+  <div class="ten wide column">
+    <h1 class="normalize"><%= @business.name %></h1>
+    <%= @business.address %><br>
+    <%= @business.address_2 %><br>
+    <%= @business.city %><br>
+    <%= @business.state %><br>
+    <%= @business.zip %>
+  </div>
+</div>
 
 <hr>
 
-<%= @business.name %>
-<%= @business.address %>
-<%= @business.address_2 %>
-<%= @business.city %>
-<%= @business.state %>
-<%= @business.zip %>
+<div class="ui grid">
+  <div class="eleven wide column">
+  <h1 class="normalize">REVIEWS</h1>
 
-<%= image_tag @business.photos[@business.photos.length-2].photo.url %>
+    <div class="ui comments">
+      <% @business.reviews.each do |review| %>
+      <div class="comment">
+        <a class="avatar">
+          <%= image_tag User.find(review.user_id).photo.url unless review.user_id == nil %>
+        </a>
+        <div class="content">
+          <a class="author"><%= "#{User.find(review.user_id.to_i).first_name} #{User.find(review.user_id.to_i).last_name}" unless review.user_id.to_i == 0 %></a>
+          <div class="metadata">
+            <div class="title"><%= review.title %></div>
+          </div>
+          <div class="text">
+            <%= simple_format(review.body) %>
+          </div>
+          <div class="actions">
+            <a class="reply"><%= "Posted " + time_ago_in_words(review.created_at) + " ago." unless review.created_at.blank? %></a>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
 
-<%= @business.photos %>
+  </div>
+  <div class="five wide column">
+    <div class="business_detail_column">
+    Hours go here
+    </div>
+  </div>
+</div>
 
-<%= form_for [@business, Photo.new] do |f| %>
-  <label>Photo:</label> <%= f.file_field :photo %>
-  Caption: <%= f.text_field :caption %>
-  <%= f.submit "Add Photo" %>
-<% end %>
+
+
+
+
+
 
 
 <%= form_for ([@business, @review]) do |f| %>
@@ -29,28 +64,23 @@
 
 <% end %>
 
-<% @business.reviews.each do |review| %>
-
-  <%= review.title %>
-  <%= simple_format(review.body) %>
-  <%= time_ago_in_words(review.created_at) + " ago." unless review.created_at.blank? %>
-  <%= "#{User.find(review.user_id.to_i).first_name} #{User.find(review.user_id.to_i).last_name}" unless review.user_id.to_i == 0 %>
-
-<% end %>
-
 <button class="test">Press Me</button>
 
 <div class="ui modal">
  <i class="close icon"></i>
  <div class="header">
-   Modal Title
+   Upload a Photo for <%= @business.name %>
  </div>
  <div class="content">
    <div class="image">
      An image can appear on left or an icon
    </div>
    <div class="description">
-     A description can appear on the right
+    <%= form_for [@business, Photo.new] do |f| %>
+      <label>Photo:</label> <%= f.file_field :photo %>
+      Caption: <%= f.text_field :caption %>
+      <%= f.submit "Add Photo" %>
+    <% end %>
    </div>
  </div>
  <div class="actions">
