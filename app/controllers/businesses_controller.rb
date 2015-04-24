@@ -34,7 +34,11 @@ class BusinessesController < ApplicationController
 	def edit
 		@business = Business.find(params[:id])
 		# @hours = Hour.new unless Hour.exists?(business_id: @business.id) do Hour.new end
-		@hours = if Hour.exists?(business_id: @business.id) do Hour.find_by_business_id(@business.id) else Hour.new end
+		if Hour.exists?(business_id: @business.id)
+			@hours = Hour.find_by_business_id(@business.id) 
+		else 
+			@hours = Hour.new 
+		end
 	end
 
 	def update

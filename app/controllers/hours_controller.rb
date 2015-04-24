@@ -18,8 +18,10 @@ class HoursController < ApplicationController
   end
 
   def update
-    business = Business.find(params[:id])
-    @hour = Hour.find_by_business_id(business.id)
+    # render plain: params
+    business_id = params[:business_id]
+    hour_id = params[:id]
+    @hour = Hour.find(hour_id)
 
     if @hour.update_attributes(hour_params)
       redirect_to('/')
