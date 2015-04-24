@@ -26,13 +26,14 @@ class BusinessesController < ApplicationController
   	@endpoint = url + key
 
 		@business = Business.find(params[:id])
-		@review = @business.reviews.new
 		@photo = @business.photos.new
+
 		@user = User.find_by_id(@business.reviews)
 	end
 
 	def edit
 		@business = Business.find(params[:id])
+		@hours = @business.hours
 	end
 
 	def update

@@ -51,7 +51,7 @@
       <% @business.reviews.each do |review| %>
       <div class="comment">
         <a class="avatar">
-          <%= image_tag User.find(review.user_id).photo.url unless review.user_id == nil %>
+          <%= image_tag review.user.photo.url %>
         </a>
         <div class="content">
           <a class="author"><%= "#{User.find(review.user_id.to_i).first_name} #{User.find(review.user_id.to_i).last_name}" unless review.user_id.to_i == 0 %></a>
@@ -84,7 +84,7 @@
 
 
 
-<%= form_for ([@business, @review]) do |f| %>
+<%= form_for ([@business, Review.new]) do |f| %>
 
   <%= f.text_field :title %>
   <%= f.text_field :rating %>
