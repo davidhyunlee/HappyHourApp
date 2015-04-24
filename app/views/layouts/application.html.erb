@@ -7,7 +7,6 @@
     <title><%= content_for?(:title) ? yield(:title) : "#happyLA - it's happy hour somewhere!" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
     <%#= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -19,14 +18,6 @@
           <div class="four wide column"><%= link_to image_tag("logo.png"), root_path, class: "logo" %></div>
           <div class="eight wide center aligned column">
              <!-- Semantic: Search Field -->
-              <div class="ui form search">
-                <div class="inline fields">
-                  <div class="field">
-                    <label>Search:</label>
-                    <input placeholder="search text.." type="text">
-                  </div>
-                </div>
-              </div>
              <!-- Semantic: Search Field End -->
           </div>
           <div class="four wide right aligned column">
