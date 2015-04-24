@@ -29,14 +29,13 @@
               </div>
              <!-- Semantic: Search Field End -->
           </div>
-          <div class="four wide column">
+          <div class="four wide right aligned column">
              <% if current_user %>
                 <div class="login_area">
+                <strong><%= current_user.email %></strong>
                 <% if current_user.photo? %>
                   <%= link_to image_tag(current_user.photo.url), user_path(current_user), class: "ui avatar image borderit" %>
                 <% end %>
-                <strong><%= current_user.email %></strong>
-                <%= link_to "Log Out", '/logout', method: :delete %>
                 </div>
                 <% else %>
                 <%= link_to "Log In", '/login' %>
