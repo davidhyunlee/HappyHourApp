@@ -1,0 +1,10 @@
+<%= @business.name %>
+
+<%= form_for [@business, @review] do |f| %>
+
+  <%= f.text_field :title %>
+  <%= f.text_field :rating %>
+  <%= f.text_area :body %>
+  <%= f.submit "Add Review", class: "tiny button radius" %>
+
+<% end %>

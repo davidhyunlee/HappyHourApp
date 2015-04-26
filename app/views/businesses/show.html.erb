@@ -2,15 +2,10 @@
 <%= render 'businesses/map' %>
 <div class="menubar">
   <div class="ui secondary  menu">
-    <a class="active item">
-      <i class="home icon"></i> Home
-    </a>
-    <a class="item">
-      <i class="mail icon"></i> Messages
-    </a>
-    <a class="item">
-      <i class="user icon"></i> Friends
-    </a>
+    <%= link_to raw("<i class='home icon'></i> Home"), root_path, class: "item" %>
+    <%= link_to raw("<i class='food icon'></i> Happy Hour Listing"), businesses_path, class: "item" %>
+    <%= link_to raw("<i class='user icon'></i> Edit Business"), edit_business_path, class: "item" %>
+    <%= link_to raw("<i class='document icon'></i> Add Review"), new_business_review_path(@business), class: "item" %>
     <div class="right menu">
       <div class="item">
         <div class="ui icon input">
@@ -30,18 +25,17 @@
     
 <div class="map_info_container" style="width: 200px; background: #fff; border: 1px solid darkgray; overflow: hidden; float: right;">
   <div id="map-canvas" style="width: 200px; height: 130px; background: #000;">f</div>
-  <p>ADDRESS<br>asdfasdf<br>sadfasfdas<br>safsadf<br><br>asDAdasdDa<br>sadfasdfasd</p>
+  <div id="address_details" style="width: 200px; padding: 6px;">
+    <h5 class="normalize">Address:</h5>
+    <%= @business.address %> <%= @business.address_2 %><br>
+    <%= @business.city %>, <%= @business.state %> <%= @business.zip %>
+  </div>
 </div>
 
     <div class="photo_business"><%= image_tag @business.photos[@business.photos.length-2].photo.url %></div>
 
     <h1 class="normalize"><%= @business.name %></h1>
-    <%= @business.address %><br>
-    <%= @business.address_2 %><br>
-    <%= @business.city %><br>
-    <%= @business.state %><br>
-    <%= @business.zip %>
-    
+
 
   </div>
 </div>
@@ -56,7 +50,7 @@
       <% @business.reviews.each do |review| %>
       <div class="comment">
         <a class="avatar">
-          <%= image_tag review.user.photo.url %>
+          <%= image_tag review.user.photo.url if review.user.photo.url %>
         </a>
         <div class="content">
           <a class="author"><%= "#{User.find(review.user_id.to_i).first_name} #{User.find(review.user_id.to_i).last_name}" unless review.user_id.to_i == 0 %></a>
@@ -85,18 +79,7 @@
   </div>
 </div>
 
-
-<%= form_for ([@business, Review.new]) do |f| %>
-
-  <%= f.text_field :title %>
-  <%= f.text_field :rating %>
-	<%= f.text_area :body %>
-	<%= f.submit "Add Review", class: "tiny button radius" %>
-
-<% end %>
-
-<button class="test">Press Me</button>
-<button class="testie">Press Me</button>
+<button class="test ui button">Add Photo</button>
 
 <div class="ui modal">
  <i class="close icon"></i>
@@ -121,12 +104,6 @@
    <%= f.submit "Add Photo", class: "ui button" %>
    <% end %>
  </div>
-</div>
-
-
-<div class="map_info_container" style="width: 200px; background: #fff; border: 1px solid darkgray; overflow: hidden;">
-  <div id="map-canvas" style="width: 200px; height: 130px; background: #000;">f</div>
-  <p>ADDRESS</p>
 </div>
 
 

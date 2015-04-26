@@ -16,13 +16,9 @@
 //= require turbolinks
 //= require_tree .
 
-// $('.ui.modal').modal('attach events', '.test', 'show');
 
 $('.long.test.modal')
-  // .modal('attach events', '.test2', 'show')
-  .modal('attach events', '.testie', {onApprove : function() {window.alert('Approved!');}})
-
-  
+  .modal('attach events', '.photomodal', {onApprove : function() {window.alert('Approved!');}})
 
 ;
 

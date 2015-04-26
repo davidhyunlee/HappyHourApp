@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+	def new
+		@business = Business.find(params[:business_id])
+		@review = @business.reviews.new
+	end
+
 	def create
 		@business = Business.find(params[:business_id])
 		@review = @business.reviews.new(review_params)
