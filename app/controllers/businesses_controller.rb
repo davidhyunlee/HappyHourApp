@@ -1,6 +1,14 @@
 class BusinessesController < ApplicationController
 	def index
-		@businesses = Business.all
+		# @businesses = Business.all
+
+  	if params[:query] && params[:filter]
+  		search_by = params[:filter].to_sym
+		query = params[:query]
+		@businesses = Business.where(search_by => query).page(params[:page])
+   	else
+    	@businesses = Business.order(:name).page(params[:page])
+    end		
 	end
 
 	def new
@@ -12,10 +20,10 @@ class BusinessesController < ApplicationController
 
 		if @business.save
 			flash[:success] = "You've successfully added your business."
-			redirect_to('/')
+			redirect_to edit_business_path(@business.id)
 		else
 			flash[:failure] = "Something went wrong. Your business wasn't created."
-			redirect_to('/')
+			render new
 		end
 	end
 
@@ -42,6 +50,13 @@ class BusinessesController < ApplicationController
 	end
 
 	def update
+		@business = Business.find(params[:id])
+
+		if @business.update_attributes(business_params)
+			redirect_to business_path
+		else
+			render edit
+		end
 	end
 
 	private

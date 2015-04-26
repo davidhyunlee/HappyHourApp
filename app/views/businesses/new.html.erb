@@ -1,13 +1,71 @@
-<%= form_for @business do |f| %>
+<div class="menubar">
+  <div class="ui secondary  menu">
+    <a class="active item">
+      <i class="home icon"></i> Home
+    </a>
+    <a class="item">
+      <i class="mail icon"></i> Messages
+    </a>
+    <a class="item">
+      <i class="user icon"></i> Friends
+    </a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+      <a class="ui item">
+        Logout
+      </a>
+    </div>
+  </div>
+</div>
 
-<%= f.label :name %>	<%= f.text_field :name %>
-<%= f.label :address %>	<%= f.text_field :address %>
-<%= f.label :address_2 %>	<%= f.text_field :address_2 %>
-<%= f.label :city %>	<%= f.text_field :city %>
-<%= f.label :state %>	<%= f.text_field :state %>
-<%= f.label :zip %>	<%= f.text_field :zip %>
-<%= f.label :phone %>	<%= f.text_field :phone %>
+<!--  -->
 
-<%= f.submit "Add Business" %>
+<div class="ui two column grid">
 
-<% end %>
+  <div class="column">
+    <div class="ui small form segment">
+      <h4 class="ui dividing header">Business Details</h4> 
+      <%= form_for @business do |f| %>
+      <div class="field">
+        <label>Business Name</label>
+        <%= f.text_field :name, class: "ui input", placeholder: "Name of business..." %>
+      </div>
+      <div class="field">
+        <label>Address</label>
+        <%= f.text_field :address, class: "ui input", placeholder: "1234 Spooner St." %>
+      </div>
+      <div class="field">
+        <label>Address 2</label>
+        <%= f.text_field :address_2, class: "ui input", placeholder: "Unit 1" %>
+      </div>
+      <div class="field">
+        <label>City</label>
+        <%= f.text_field :city, class: "ui input", placeholder: "Los Angeles" %>
+      </div>
+      <div class="two fields">
+        <div class="field">
+        <label>State</label>
+        <%= f.text_field :state, class: "ui input", placeholder: "Los Angeles" %> 
+        </div>
+        <div class="field">
+        <label>ZIP</label>
+        <%= f.text_field :zip, class: "ui input", placeholder: "Los Angeles" %>          
+        </div>
+      </div>
+      <%= f.submit "Submit Business Details", class: "ui button" %>
+      <% end %>
+    </div>
+
+  </div>
+  
+  <div class="column">
+2
+  </div>
+
+</div>
+

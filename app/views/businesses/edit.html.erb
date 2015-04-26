@@ -24,117 +24,176 @@
 </div>
 
 <!--  -->
+<div class="ui center aligned dividing header"><%= link_to @business.name, business_path %></div>
 
 <div class="ui two column grid">
-
   <div class="column">
     <div class="ui small form segment">
       <h4 class="ui dividing header">Edit Business</h4> 
+      <%= form_for @business do |f| %>
       <div class="field">
         <label>Business Name</label>
-        <input placeholder="Business Name..." type="text">
+        <%= f.text_field :name, class: "ui input", placeholder: "Name of business..." %>
       </div>
       <div class="field">
         <label>Address</label>
-        <input placeholder="1234 Spooner St." type="text">
+        <%= f.text_field :address, class: "ui input", placeholder: "1234 Spooner St." %>
       </div>
       <div class="field">
         <label>Address 2</label>
-        <input placeholder="Unit 2" type="text">
+        <%= f.text_field :address_2, class: "ui input", placeholder: "Unit 1" %>
       </div>
       <div class="field">
         <label>City</label>
-        <input placeholder="City.." type="text">
+        <%= f.text_field :city, class: "ui input", placeholder: "Los Angeles" %>
       </div>
-      <div class="ui submit button">Submit</div>
+      <div class="two fields">
+        <div class="field">
+        <label>State</label>
+        <%= f.text_field :state, class: "ui input", placeholder: "Los Angeles" %> 
+        </div>
+        <div class="field">
+        <label>ZIP</label>
+        <%= f.text_field :zip, class: "ui input", placeholder: "Los Angeles" %>          
+        </div>
+      </div>
+      <%= f.submit "Update Business Details", class: "ui button" %>
+      <% end %>
     </div>
+
   </div>
   
   <div class="column">
     <div class="ui small form segment">
       <h4 class="ui dividing header">Hours of Operation</h4>
+      <%= form_for [@business, @hours] do |f| %>
       <div class="two fields"> <!-- Monday -->
         <div class="field">
-          <label>Open</label>
-          <select class="ui search dropdown normalize">
-            <option value="">Closed</option>
-            <option value="12:00AM">12:00AM </option>
-            <option value="12:30AM">12:30AM</option>
-            <option value="1:00AM">1:00AM</option>
-            <option value="1:30AM">1:30AM</option>
-            <option value="12:00AM">12:00AM</option>
-          </select>
+          <h5 class="ui center aligned dividing header">Open</h5>
+          <%= select_tag 'hour[mon_open]', "<option value='#{@hours.mon_open}'>Monday - #{@hours.mon_open.strftime('%l:%M%p') if @hours.mon_open}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_mon_open" %>
         </div>
         <div class="field">
-          <label>Close</label>
-          <select class="ui search dropdown normalize">
-            <option value="">Closed</option>
-            <option value="12:00AM">12:00AM </option>
-            <option value="12:30AM">12:30AM</option>
-            <option value="1:00AM">1:00AM</option>
-            <option value="1:30AM">1:30AM</option>
-            <option value="12:00AM">12:00AM</option>
-          </select>
+          <h5 class="ui center aligned dividing header">Close</h5>
+          <%= select_tag 'hour[mon_close]', "<option value='#{@hours.mon_close}'>Monday - #{@hours.mon_close.strftime('%l:%M%p') if @hours.mon_close}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_mon_close" %>
         </div>
       </div>
       <div class="two fields"> <!-- Tuesday -->
         <div class="field">
-          <select class="ui search dropdown normalize">
-            <option value="">Tuesday</option>
-            <option value="12:00AM">12:00AM </option>
-            <option value="12:30AM">12:30AM</option>
-            <option value="1:00AM">1:00AM</option>
-            <option value="1:30AM">1:30AM</option>
-            <option value="12:00AM">12:00AM</option>
-          </select>
+          <%= select_tag 'hour[tue_open]', "<option value='#{@hours.tue_open}'>Tuesday - #{@hours.tue_open.strftime('%l:%M%p') if @hours.tue_open}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_tue_open" %>
         </div>
         <div class="field">
-          <select class="ui search dropdown normalize">
-            <option value="">Closed</option>
-            <option value="12:00AM">12:00AM </option>
-            <option value="12:30AM">12:30AM</option>
-            <option value="1:00AM">1:00AM</option>
-            <option value="1:30AM">1:30AM</option>
-            <option value="12:00AM">12:00AM</option>
-          </select>
+          <%= select_tag 'hour[tue_close]', "<option value='#{@hours.tue_close}'>Tuesday - #{@hours.tue_close.strftime('%l:%M%p') if @hours.tue_close}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_tue_close" %>
         </div>
       </div>
+      <div class="two fields"> <!-- Wednesday -->
+        <div class="field">
+          <%= select_tag 'hour[wed_open]', "<option value='#{@hours.wed_open}'>Wednesday - #{@hours.wed_open.strftime('%l:%M%p') if @hours.wed_open}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_wed_open" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[wed_close]', "<option value='#{@hours.wed_close}'>Wednesday - #{@hours.wed_close.strftime('%l:%M%p') if @hours.wed_close}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_wed_close" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Thursday -->
+        <div class="field">
+          <%= select_tag 'hour[thu_open]', "<option value='#{@hours.thu_open}'>Thursday - #{@hours.thu_open.strftime('%l:%M%p') if @hours.thu_open}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_thu_open" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[thu_close]', "<option value='#{@hours.thu_close}'>Thursday - #{@hours.thu_close.strftime('%l:%M%p') if @hours.thu_close}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_thu_close" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Friday -->
+        <div class="field">
+          <%= select_tag 'hour[fri_open]', "<option value='#{@hours.fri_open}'>Friday - #{@hours.fri_open.strftime('%l:%M%p') if @hours.fri_open}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_fri_open" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[fri_close]', "<option value='#{@hours.fri_close}'>Friday - #{@hours.fri_close.strftime('%l:%M%p') if @hours.fri_close}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_fri_close" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Saturday -->
+        <div class="field">
+          <%= select_tag 'hour[sat_open]', "<option value='#{@hours.sat_open}'>Saturday - #{@hours.sat_open.strftime('%l:%M%p') if @hours.sat_open}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_sat_open" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[sat_close]', "<option value='#{@hours.sat_close}'>Saturday - #{@hours.sat_close.strftime('%l:%M%p') if @hours.sat_close}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_sat_close" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Sunday -->
+        <div class="field">
+          <%= select_tag 'hour[sun_open]', "<option value='#{@hours.sun_open}'>Sunday - #{@hours.sun_open.strftime('%l:%M%p') if @hours.sun_open}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_sun_open" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[sun_close]', "<option value='#{@hours.sun_close}'>Sunday - #{@hours.sun_close.strftime('%l:%M%p') if @hours.sun_close}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_sun_close" %>
+        </div>
+      </div>
+      <%= f.submit "Update Business Hours", class: "ui button" %>
+      </div>
 
-      <h4 class="ui dividing header">Happy Hours</h4>
-      <div class="ui submit button">Submit</div>
+    <div class="ui small form segment">
+      <h4 class="ui dividing header">Happy Hour</h4>
+      <div class="two fields"> <!-- Monday -->
+        <div class="field">
+          <h5 class="ui center aligned dividing header">Start</h5>
+          <%= select_tag 'hour[mon_start]', "<option value='#{@hours.mon_start}'>Monday - #{@hours.mon_start.strftime('%l:%M%p') if @hours.mon_start}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_mon_start" %>
+        </div>
+        <div class="field">
+          <h5 class="ui center aligned dividing header">End</h5>
+          <%= select_tag 'hour[mon_end]', "<option value='#{@hours.mon_end}'>Monday - #{@hours.mon_end.strftime('%l:%M%p') if @hours.mon_end}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_mon_end" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Tuesday -->
+        <div class="field">
+          <%= select_tag 'hour[tue_start]', "<option value='#{@hours.tue_start}'>Tuesday - #{@hours.tue_start.strftime('%l:%M%p') if @hours.tue_start}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_tue_start" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[tue_end]', "<option value='#{@hours.tue_end}'>Tuesday - #{@hours.tue_end.strftime('%l:%M%p') if @hours.tue_end}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_tue_end" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Wednesday -->
+        <div class="field">
+          <%= select_tag 'hour[wed_start]', "<option value='#{@hours.wed_start}'>Wednesday - #{@hours.wed_start.strftime('%l:%M%p') if @hours.wed_start}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_wed_start" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[wed_end]', "<option value='#{@hours.wed_end}'>Wednesday - #{@hours.wed_end.strftime('%l:%M%p') if @hours.wed_end}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_wed_end" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Thursday -->
+        <div class="field">
+          <%= select_tag 'hour[thu_start]', "<option value='#{@hours.thu_start}'>Thursday - #{@hours.thu_start.strftime('%l:%M%p') if @hours.thu_start}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_thu_start" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[thu_end]', "<option value='#{@hours.thu_end}'>Thursday - #{@hours.thu_end.strftime('%l:%M%p') if @hours.thu_end}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_thu_end" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Friday -->
+        <div class="field">
+          <%= select_tag 'hour[fri_start]', "<option value='#{@hours.fri_start}'>Friday - #{@hours.fri_start.strftime('%l:%M%p') if @hours.fri_start}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_fri_start" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[fri_end]', "<option value='#{@hours.fri_end}'>Friday - #{@hours.fri_end.strftime('%l:%M%p') if @hours.fri_end}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_fri_end" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Saturday -->
+        <div class="field">
+          <%= select_tag 'hour[sat_start]', "<option value='#{@hours.sat_start}'>Saturday - #{@hours.sat_start.strftime('%l:%M%p') if @hours.sat_start}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_sat_start" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[sat_end]', "<option value='#{@hours.sat_end}'>Saturday - #{@hours.sat_end.strftime('%l:%M%p') if @hours.sat_end}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_sat_end" %>
+        </div>
+      </div>
+      <div class="two fields"> <!-- Sunday -->
+        <div class="field">
+          <%= select_tag 'hour[sun_start]', "<option value='#{@hours.sun_start}'>Sunday - #{@hours.sun_start.strftime('%l:%M%p') if @hours.sun_start}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_sun_start" %>
+        </div>
+        <div class="field">
+          <%= select_tag 'hour[sun_end]', "<option value='#{@hours.sun_end}'>Sunday - #{@hours.sun_end.strftime('%l:%M%p') if @hours.sun_end}</option>#{render 'businesses/hours'}".html_safe, class: "ui search dropdown normalize", id: "hour_sun_end" %>
+        </div>
+      </div>
+      <%= f.submit "Update Happy Hour Details", class: "ui button" %>
+      <% end %>
+      </div>
+
     </div>
   </div>
 
 </div>
-
-<%= form_for @business do |f| %>
-
-<%= select_tag 'mon_open', "
-        <option value=''>Monday</option>
-        <option value='12:00AM'>12:00AM (midnight)</option>
-        <option value='12:30AM'>12:30AM</option>
-        <option value='1:00AM'>1:00AM</option>
-        <option value='1:30AM'>1:30AM</option>
-        <option value='12:00AM'>12:00AM</option>
-".html_safe, class: "ui search dropdown" %>
-<%= f.text_field :name, class: "ui input" %>
-<%= f.text_field :address, class: "ui input"  %>
-<%= f.text_field :address_2, class: "ui input"  %>
-<%= f.text_field :city, class: "ui input"  %>
-<%= f.text_field :state, class: "ui input"  %>
-<%= f.text_field :zip, class: "ui input"  %>
-<%= f.file_field :photo, class: "ui input"  %>
-
-	<%= f.submit "Update Business", class: "ui input" %>
-
-<% end %>
-
-
-      <%= form_for [@business, @hours] do |f| %>
-   
-            Monday Opening Time: <%= f.text_field :mon_open %>
-            <%= f.submit "Update Business Hours" %>
-
-      <% end %>
-
 

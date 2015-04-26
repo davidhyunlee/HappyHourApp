@@ -24,7 +24,8 @@
 </div>
 
 <div class="ui grid">
-  <div class="ten wide column">
+  <div class="sixteen wide column">
+      <span style="float: right">ASDFAGASDFSDAFASDF</span>
     <div class="photo_business"><%= image_tag @business.photos[@business.photos.length-2].photo.url %></div>
 
     <h1 class="normalize"><%= @business.name %></h1>
@@ -33,11 +34,8 @@
     <%= @business.city %><br>
     <%= @business.state %><br>
     <%= @business.zip %>
+    
 
-  </div>
-  <div class="six wide column">
-    <div id="map-canvas">
-    </div>
   </div>
 </div>
 
@@ -72,7 +70,10 @@
   </div>
   <div class="five wide column">
     <div class="business_detail_column">
-    Hours go here
+      <div class="ui dividing header">Business Hours</div>
+      Monday: <% if @business.hour.mon_open %><%= @business.hour.mon_open.strftime('%l:%M%p') %><% else %>???<% end %> - <% if @business.hour.mon_close %><%= @business.hour.mon_close.strftime('%l:%M%p') %><% else %>???<% end %>
+
+      <div class="ui dividing header">Happy Hour</div>
     </div>
   </div>
 </div>

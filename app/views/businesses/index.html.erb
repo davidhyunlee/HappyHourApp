@@ -1,5 +1,49 @@
-<% @businesses.each do |business| %>
+<div class="menubar">
+  <div class="ui secondary  menu">
+    <a class="active item">
+      <i class="home icon"></i> Home
+    </a>
+    <a class="item">
+      <i class="mail icon"></i> Messages
+    </a>
+    <a class="item">
+      <i class="user icon"></i> Friends
+    </a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+      <a class="ui item">
+        Logout
+      </a>
+    </div>
+  </div>
+</div>
 
-<%= link_to business.name, business_path(business) %>
+
+<%= form_tag(businesses_path, method: 'get') do %>
+
+  Filter: <%= select_tag :filter, options_for_select(["name"]) %>: <%= text_field_tag :query %>
+  <%= submit_tag "Search" %>
 
 <% end %>
+
+
+<% @businesses.each do |business| %>
+
+<div class="business_index_container">
+  <p style="float: right">1234 Milbank St<br>Studio City</p>
+  <div class="business_index_avatar_container" style="background: #000 url('<%= business.photos[0].photo.url if business.photos[0] %>')">sadf</div>
+  <h4 style="display: inline"><%= link_to business.name, business_path(business) %></h4>
+  <p class="normalize"><%= "#{business.reviews.count} reviews" if business.reviews.count > 0 %><%= "No reviews yet." if business.reviews.count == 0 %></p>
+  <p class="normalize">Happy Hour Today: 1:00AM - 1:00PM</p>
+  <div class="review_snippet_container">asdf</div>
+</div>
+
+<% end %>
+
+
+<%= paginate @businesses %>

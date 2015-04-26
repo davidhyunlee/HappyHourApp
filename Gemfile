@@ -27,13 +27,21 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'mini_magick'
+# Keeps sensitive information secret.
 gem 'figaro'
+
 gem 'fog'
+# Used for pagination.
 gem 'kaminari'
+
 gem 'carrierwave'
+# Used for OAuth.
 gem 'omniauth'
+# OAuth for Facebook.
 gem 'omniauth-facebook'
+# Better error pages.
 gem 'better_errors'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
