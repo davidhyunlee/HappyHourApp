@@ -16,7 +16,15 @@
 //= require turbolinks
 //= require_tree .
 
-  $('.ui.modal').modal('attach events', '.test', 'show');
+// $('.ui.modal').modal('attach events', '.test', 'show');
+
+$('.long.test.modal')
+  // .modal('attach events', '.test2', 'show')
+  .modal('attach events', '.testie', {onApprove : function() {window.alert('Approved!');}})
+
+  
+
+;
 
 $('select.dropdown')
   .dropdown()
@@ -28,4 +36,11 @@ $('.ui.checkbox')
 
 $('.ui.radio.checkbox')
   .checkbox()
+;
+
+$('.dropdown')
+  .dropdown({
+    // you can use any ui transition
+    transition: 'drop'
+  })
 ;

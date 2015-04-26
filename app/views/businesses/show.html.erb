@@ -1,3 +1,5 @@
+<script type="text/javascript" src="<%= @endpoint %>"></script>
+<%= render 'businesses/map' %>
 <div class="menubar">
   <div class="ui secondary  menu">
     <a class="active item">
@@ -25,7 +27,12 @@
 
 <div class="ui grid">
   <div class="sixteen wide column">
-      <span style="float: right">ASDFAGASDFSDAFASDF</span>
+    
+<div class="map_info_container" style="width: 200px; background: #fff; border: 1px solid darkgray; overflow: hidden; float: right;">
+  <div id="map-canvas" style="width: 200px; height: 130px; background: #000;">f</div>
+  <p>ADDRESS<br>asdfasdf<br>sadfasfdas<br>safsadf<br><br>asDAdasdDa<br>sadfasdfasd</p>
+</div>
+
     <div class="photo_business"><%= image_tag @business.photos[@business.photos.length-2].photo.url %></div>
 
     <h1 class="normalize"><%= @business.name %></h1>
@@ -89,6 +96,7 @@
 <% end %>
 
 <button class="test">Press Me</button>
+<button class="testie">Press Me</button>
 
 <div class="ui modal">
  <i class="close icon"></i>
@@ -96,21 +104,30 @@
    Upload a Photo for <%= @business.name %>
  </div>
  <div class="content">
-   <div class="image">
-     An image can appear on left or an icon
-   </div>
-   <div class="description">
-    <%= form_for [@business, Photo.new] do |f| %>
-      <label>Photo:</label> <%= f.file_field :photo %>
-      Caption: <%= f.text_field :caption %>
-      <%= f.submit "Add Photo" %>
-    <% end %>
-   </div>
+    <div class="ui small form segment">
+      <div class="description">
+        <%= form_for [@business, Photo.new] do |f| %>
+        <div class="field">
+          <label>Photo:</label> <%= f.file_field :photo, class: "ui input" %>
+        </div>
+        <div class="field">
+          <label>Caption:</label> <%= f.text_field :caption, class: "ui input" %>
+        </div>
+      </div>
+    </div>
  </div>
  <div class="actions">
    <div class="ui button">Cancel</div>
-   <div class="ui button">OK</div>
+   <%= f.submit "Add Photo", class: "ui button" %>
+   <% end %>
  </div>
 </div>
 
-<script type="text/javascript" src="<%= @endpoint %>"></script>
+
+<div class="map_info_container" style="width: 200px; background: #fff; border: 1px solid darkgray; overflow: hidden;">
+  <div id="map-canvas" style="width: 200px; height: 130px; background: #000;">f</div>
+  <p>ADDRESS</p>
+</div>
+
+
+

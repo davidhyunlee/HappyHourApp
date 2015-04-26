@@ -45,6 +45,12 @@ body {
   padding: 15px;
 }
 
+.small_avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+}
+
 .business_index_container {
   width: 100%;
   border: 1px solid darkgray;
@@ -129,7 +135,7 @@ body {
   margin: 0;
 }
 
-#map-canvas {
+/*#map-canvas {
   height: 250px;
   width: 250px;
-}
+}*/

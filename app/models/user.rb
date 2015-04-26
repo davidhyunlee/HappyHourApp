@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   has_secure_password
   mount_uploader :photo, ProfileUploader
 
+  def admin?
+    self.role == 'admin'
+  end
+
   def self.from_omniauth(auth)
     where({:provider => auth['provider'], :uid => auth['uid']}).first_or_initialize.tap do |user|
       user.provider = auth['provider']

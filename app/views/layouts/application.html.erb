@@ -23,7 +23,7 @@
           <div class="four wide right aligned column">
              <% if current_user %>
                 <div class="login_area">
-                <strong><%= current_user.email %></strong><%= current_user %>
+                <strong><%= current_user.email %></strong>
                 <% if current_user.photo? %>
                   <%= link_to image_tag(current_user.photo.url), user_path(current_user), class: "ui avatar image borderit" %>
                 <% end %>
@@ -44,6 +44,28 @@
           <%= yield %>
 
           <%= params %>  
+
+
+  <br><br>
+
+
+    <div class="ui top right pointing dropdown">
+      <div class="adf" style="width: 40px; height:40px; background: #000; display: inline-block; border-radius: 3px;">                
+        <% if current_user %>
+          <% if current_user.photo? %>
+            <%= image_tag current_user.photo.url, class: "small_avatar" %>
+          <% else %>
+            <%= image_tag "unknown_user.png", class: "small_avatar" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="menu">
+        <div class="" style="width: 200px; height: 200px;">sadfasdfas</div>
+      </div>
+    </div>
+
+
+
 
        </div> <!-- Container End -->
     </div> <!-- Body Container End -->

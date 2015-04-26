@@ -1,4 +1,8 @@
 class BusinessesController < ApplicationController
+
+	before_action :require_user, only: [:contact, :help]
+	before_action :require_admin, only: [:new, :create, :edit]
+
 	def index
 		# @businesses = Business.all
 
