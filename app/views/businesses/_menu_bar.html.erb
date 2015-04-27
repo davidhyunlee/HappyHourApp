@@ -1,6 +1,6 @@
 <div class="menubar">
   <div class="ui secondary menu">
-    <%= link_to raw("<i class='home icon'></i> Home"), root_path, class: "active item" %>
+    <%= link_to raw("<i class='home icon'></i> Home"), root_path, class: "item" %>
     <%= link_to raw("<i class='food icon'></i> Back to #{@business.name}"), business_path, class: "item" if current_user && current_user.admin? && params[:action] == 'edit' %>
     <%= link_to raw("<i class='food icon'></i> Happy Hour Listing"), businesses_path, class: "item" %>
     <%= link_to raw("<i class='food icon'></i> Add Review"), new_business_review_path(params[:id]), class: "item" if current_user && params[:action] == 'show' %>
