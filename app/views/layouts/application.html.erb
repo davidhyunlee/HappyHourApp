@@ -23,7 +23,6 @@
                 <div class="inline fields">
                 <%= form_tag(businesses_path, method: 'get') do %>
                   <div class="field"><%= text_field_tag :query, "", placeholder: 'Search for..' %></div>
-                  <div class="field"><%= select_tag :filter, options_for_select(["name"]) %></div>
                   <div class="field"><%= submit_tag "Search", :class => 'ui small green button but_opacity' %></div>
                 <% end %>
                 </div>

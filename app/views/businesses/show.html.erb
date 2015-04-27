@@ -1,23 +1,6 @@
 <script type="text/javascript" src="<%= @endpoint %>"></script>
-<div class="menubar">
-  <div class="ui secondary  menu">
-    <%= link_to raw("<i class='home icon'></i> Home"), root_path, class: "item" %>
-    <%= link_to raw("<i class='food icon'></i> Happy Hour Listing"), businesses_path, class: "item" %>
-    <%= link_to raw("<i class='user icon'></i> Edit Business"), edit_business_path, class: "item" %>
-    <%= link_to raw("<i class='file text outline icon'></i> Add Review"), new_business_review_path(@business), class: "item" %>
-    <div class="right menu">
-      <div class="item">
-        <div class="ui icon input">
-          <input type="text" placeholder="Search...">
-          <i class="search link icon"></i>
-        </div>
-      </div>
-      <a class="ui item">
-        Logout
-      </a>
-    </div>
-  </div>
-</div>
+
+<%= render 'businesses/menu_bar' %>
 
 <div class="ui grid">
   <div class="sixteen wide column">
@@ -44,33 +27,24 @@
   </div>
 </div>
 
-<hr>
+<hr style="margin-bottom: 10px;">
 
 <div class="ui grid">
   <div class="eleven wide column">
-  <h1 class="normalize">REVIEWS</h1>
+  <h1 class="ui dividing header">REVIEWS</h1>
 
-    <div class="ui comments">
-      <% @business.reviews.each do |review| %>
-      <div class="comment">
-        <a class="avatar">
-          <%= image_tag review.user.photo.url if review.user.photo.url %>
-        </a>
-        <div class="content">
-          <a class="author"><%= "#{User.find(review.user_id.to_i).first_name} #{User.find(review.user_id.to_i).last_name}" unless review.user_id.to_i == 0 %></a>
-          <div class="metadata">
-            <div class="title"><%= review.title %></div>
-          </div>
-          <div class="text">
-            <%= simple_format(review.body) %>
-          </div>
-          <div class="actions">
-            <a class="reply"><%= "Posted " + time_ago_in_words(review.created_at) + " ago." unless review.created_at.blank? %></a>
-          </div>
-        </div>
+<% @business.reviews.order(created_at: :desc).each do |review| %>
+    <div class="review_container">
+      <div class="review_user">
+        <%= image_tag review.user.photo.url, class: "review_avatar" if review.user.photo.url %><strong><%= link_to "#{User.find(review.user_id.to_i).first_name} #{User.find(review.user_id.to_i).last_name}", user_path(review.user_id) unless review.user_id.to_i == 0 %></strong>
       </div>
-      <% end %>
+      <div class="review_body">
+        <strong><%= review.title %></strong> - <span class="small_text"><%= "Posted " + time_ago_in_words(review.created_at) + " ago." unless review.created_at.blank? %></span><br>
+        <p class="normalize small_text"><b class="small_text">Rating: 5</b></p>
+        <p style="padding-top: 8px;"><%= simple_format(review.body) %></p>
+      </div>
     </div>
+<% end %>
 
   </div>
   <div class="five wide column">

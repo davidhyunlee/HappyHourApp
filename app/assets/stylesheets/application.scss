@@ -43,6 +43,39 @@ body {
   z-index: -2;
 }
 
+.review_container {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid black;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  margin-bottom: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+}
+
+.review_user {
+  position: absolute;
+  left: 10px;
+  width: 110px;
+}
+
+.review_body {
+  right: 10px;
+  top: 10px;
+  margin-left: 110px;
+}
+
 .but_opacity {
   opacity: .9;
 }
@@ -110,6 +143,12 @@ body {
   display: inline-block;
 }
 
+.review_avatar {
+  width: 80px;
+  height: 80px;
+  display: block;
+}
+
 .unknown_avatar {
   height: 38px;
   width: 38px;
@@ -174,8 +213,9 @@ body {
 .menubar {
   width: 100%;
   margin: 0 auto 15px;
-  border: 1px solid darkgray;
+  border: 1px solid black;
   background: #fff;
+  color: #000;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
   -moz-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
   box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);

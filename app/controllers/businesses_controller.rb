@@ -6,10 +6,9 @@ class BusinessesController < ApplicationController
 	def index
 		# @businesses = Business.all
 
-  	if params[:query] && params[:filter]
-  		search_by = params[:filter].to_sym
+  	if params[:query]
 		query = params[:query]
-		@businesses = Business.where(search_by => query).page(params[:page])
+		@businesses = Business.where(:name => query).page(params[:page])
    	else
     	@businesses = Business.order(:name).page(params[:page])
     end		
@@ -62,6 +61,13 @@ class BusinessesController < ApplicationController
 		else
 			render edit
 		end
+	end
+
+	def destroy
+		@business = Business.find(params[:id])
+		@business.reviews.destroy_all
+    @business.destroy
+    redirect_to businesses_path
 	end
 
 	private
