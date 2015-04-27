@@ -36,11 +36,16 @@
 
 <div class="business_index_container">
   <p style="float: right">1234 Milbank St<br>Studio City</p>
-  <div class="business_index_avatar_container" style="background: #000 url('<%= business.photos[0].photo.url if business.photos[0] %>')">sadf</div>
+  <div class="business_index_avatar_container" style="background: #fff url('<%= business.photos[0].photo.url if business.photos[0] %>'); background-size: 100px 100px;"></div>
   <h4 style="display: inline"><%= link_to business.name, business_path(business) %></h4>
   <p class="normalize"><%= "#{business.reviews.count} reviews" if business.reviews.count > 0 %><%= "No reviews yet." if business.reviews.count == 0 %></p>
   <p class="normalize">Happy Hour Today: 1:00AM - 1:00PM</p>
-  <div class="review_snippet_container">asdf</div>
+
+  <div class="review_snippet_container">
+    <div class="business_index_user_avatar" style="width: 80px; height: 80px; background: #fff url('<%= business.reviews.last.user.photo.url if business.reviews.last %>'); background-size: 80px 80px; position: absolute; left: 0; margin: 0 10px 0 10px"></div>
+    <div style="margin-left: 90px; height: 80px; display: inline-block;">ASDKFJLSKDfj SALDKFJ SADKLJF KSDLAJF SKDLAJF LSKADJAFJ LKS</div>
+  </div>
+
 </div>
 
 <% end %>

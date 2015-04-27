@@ -53,6 +53,7 @@ body {
 
 .business_index_container {
   width: 100%;
+  background: #fff;
   border: 1px solid darkgray;
   border-radius: 10px;
   padding: 10px;
@@ -69,11 +70,13 @@ body {
   margin: 0 10px 10px 0;
   border-radius: 5px;
   background: #000;
+  border: 1px solid black;
 }
 
 .review_snippet_container {
   width: 100%;
   clear: left;
+  position: relative;
   padding: 10px;
   border: 1px dotted darkgray;
 }
