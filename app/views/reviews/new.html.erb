@@ -1,10 +1,20 @@
-<%= @business.name %>
+<h4 class="ui dividing header">Add a Review for <%= @business.name %></h4>
 
+<div class="ui small form segment">
 <%= form_for [@business, @review] do |f| %>
-
-  <%= f.text_field :title %>
-  <%= f.text_field :rating %>
-  <%= f.text_area :body %>
-  <%= f.submit "Add Review", class: "tiny button radius" %>
+  <div class="field">
+  <label>Review Title / Shout</label>
+  <%= f.text_field :title, class: "ui input" %>
+  </div>
+  <div class="field">
+  <label>Rating</label>
+  <%= select_tag 'review[rating]', "<option value='5'>5 Stars</option><option value='4'>4 Stars</option><option value='3'>3 Stars</option><option value='2'>2 Stars</option><option value='1'>1 Star</option>".html_safe, class: "ui search dropdown normalize", id: "review_rating" %>
+  </div>
+  <div class="field">
+  <label>Review</label>
+  <%= f.text_area :body, class: "ui input" %>
+  </div>
+  <%= f.submit "Add Review", class: "ui green button" %>
 
 <% end %>
+</div>
