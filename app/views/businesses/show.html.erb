@@ -1,5 +1,4 @@
 <script type="text/javascript" src="<%= @endpoint %>"></script>
-<%= render 'businesses/map' %>
 <div class="menubar">
   <div class="ui secondary  menu">
     <%= link_to raw("<i class='home icon'></i> Home"), root_path, class: "item" %>
@@ -95,17 +94,18 @@
         </div>
         <div class="field">
           <label>Caption:</label> <%= f.text_field :caption, class: "ui input" %>
-             <%= f.submit "Add Photo", class: "ui button" %>
+        </div>
+        <div class="field">
+          <%= f.submit "Add Photo", class: "ui button" %>
+        <% end %>
         </div>
       </div>
     </div>
  </div>
  <div class="actions">
    <div class="ui button">Cancel</div>
-   <%= f.submit "Add Photo", class: "ui button" %>
-   <% end %>
  </div>
 </div>
-
+<%= render 'businesses/map' %>
 
 

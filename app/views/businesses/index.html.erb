@@ -42,8 +42,8 @@
   <p class="normalize">Happy Hour Today: 1:00AM - 1:00PM</p>
 
   <div class="review_snippet_container">
-    <div class="business_index_user_avatar" style="width: 80px; height: 80px; background: #fff url('<%= business.reviews.last.user.photo.url if business.reviews.last %>'); background-size: 80px 80px; position: absolute; left: 0; margin: 0 10px 0 10px"></div>
-    <div style="margin-left: 90px; height: 80px; display: inline-block;">ASDKFJLSKDfj SALDKFJ SADKLJF KSDLAJF SKDLAJF LSKADJAFJ LKS</div>
+    <div class="business_index_user_avatar" style="width: 80px; height: 80px; background: #fff url('<%= business.reviews.last.user.photo.url if business.reviews.last %>'); background-size: 80px 80px; position: absolute; left: 0;"></div>
+    <div style="margin-left: 90px; height: 80px; display: inline-block;"><%= simple_format(business.reviews.last.body) if business.reviews.last %></div>
   </div>
 
 </div>

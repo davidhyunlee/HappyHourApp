@@ -1,11 +1,35 @@
-<%= form_tag('/login', method: :post) do %>
-  <div class="ui input">
-  <p>Email: <%= text_field_tag :email %></p>
+<div class="ui two column grid">
+  <div class="column">
+    <div class="ui small form segment">
+    <h5 class="ui dividing header">Log In w/ #happyLA Account :)</h5>
+    <%= form_tag('/login', method: :post) do %>
+      <div class="field">
+        <label>Email:</label> <%= text_field_tag :email %>
+      </div>
+      <div class="field">
+        <label>Password:</label> <%= text_field_tag :password %>
+      </div>
+      <div class="field">
+      <%= submit_tag "Login", class: "ui primary button" %>
+      </div>
+    <% end %>
+    </div>
+  </div>  
+  <div class="column">
+    <div class="ui small form segment">
+    <h5 class="ui dividing header">Log In using FaceBook</h5>
+
+
+      <div id="user-widget">
+        <% if current_user %>
+          Welcome <strong><%= current_user.name %></strong>!
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <% else %>
+          <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "ui facebook button" %>
+        <% end %>
+      </div>
+
+
+    </div>
   </div>
-  <div class="ui input">
-  <p>Password: <%= password_field_tag :password %></p>
-  </div>
-  <div class="ui input">
-  <%= submit_tag "Login", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>

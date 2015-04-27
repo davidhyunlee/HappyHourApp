@@ -19,7 +19,7 @@
   <div class="two fields">
     <div class="field">
       <label>Username</label>
-      <%= f.text_field :username, placeholder: "Username..." %>
+      <%= f.text_field :username, placeholder: "Desired username..." %>
     </div>
     <div class="field">
       <label>E-mail</label>
@@ -34,13 +34,7 @@
     <label>Confirm Password</label>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="inline field">
-    <div class="ui checkbox">
-      <input id="terms" type="checkbox">
-      <label for="terms">I agree to the terms and conditions</label>
-    </div>
-  </div>
-  <div class="ui blue submit button">Create Account</div>
+  <%= f.submit "Create Account", class: "ui blue submit button" %>
 <% end %>
 <div class="ui bottom attached warning message">
   <i class="icon help"></i>
