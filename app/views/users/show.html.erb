@@ -1,10 +1,11 @@
 <%= render 'users/menu_bar' %>
 
 <div class="ui grid">
-  <div class="sixteen wide column">
-    <%= image_tag @user.photo.url, class: "ui left floated image" if @user.photo? %>
-    <h1 class="normalize"><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-    <span class="subheading"><%= @user.username %>: <i>"<%= @user.headline %>"</i></span>
+  <div class="six wide column">
+    <div style="width: 327px; height: 327px; border: 1px solid black; background #000; text-align: center;"><%= image_tag @user.photo.url if @user.photo %></div>
+    <center><br>
+    <h1 class="normalize"><%= "#{@user.first_name} #{@user.last_name}" if @user.first_name && @user.last_name %></h1>
+    <span class="subheading"><%= "#{@user.username}: <i>#{@user.headline}</i>".html_safe %></span>
 
     <strong>Nickname:</strong>
     <p><%= @user.nickname %></p>
@@ -17,6 +18,17 @@
 
     <strong>Hometown:</strong>
     <p><%= @user.hometown %></p>
+    </center>
+  </div>
+  <div class="ten wide column">
+<h5 class="ui dividing header">Recent reviews by <%= @user.first_name %></h5>
+<% @user.reviews.each do |review| %>
+<div class="recent_businesses_container">
+    <div class="ui dividing header"><strong><%= link_to review.business.name, business_path(review.business.id) if review.business %></strong> <span class="small_text"><% if review.title %>"<% end %><%= review.title %><% if review.title %>"<% end %></span></div>
+    <span class="small_text"><%= simple_format(review.body) %></span>
+</div>
+<% end %>
 
   </div>
 </div>
+

@@ -25,14 +25,13 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		render plain: params
-		# @user = User.find(params[:id])
+		@user = User.find(params[:id])
 
-		# if @user.update_attributes(userprofile_params)
-		# 	redirect_to('/')
-		# else
-		# 	render edit
-		# end
+		if @user.update_attributes(userprofile_params)
+			redirect_to('/')
+		else
+			render edit
+		end
 	end
 
 	private

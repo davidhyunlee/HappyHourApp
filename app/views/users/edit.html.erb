@@ -1,12 +1,19 @@
 <%= render 'users/menu_bar' %>
 <div class="ui two column grid">
 	<div class="column">
-	<%= image_tag @user.photo.url if @user.photo %>
-	<%= form_for @user do |f| %>
+	<div class="ui small form segment">
+			<center><%= image_tag @user.photo.url, class: "borderit" if @user.photo %></center><br><br>
 
-		<%= f.label :photo, class: "ui input"  %><%= f.file_field :photo, class: "ui input"  %>
+	<%= form_for @user do |f| %>
+		<div class="field">
+		<label>Upload a Photo</label><%= f.file_field :photo, class: "ui input"  %>
+		</div>
 
 	<%= f.submit "Upload Photo", class: "ui green button" %>
+
+	</div>
+
+
 
 	<% end %>
 

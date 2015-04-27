@@ -29,12 +29,12 @@
               </div>
               <div class="menu" style="padding: 10px; width: 200px">
                 <%= image_tag current_user.photo.url, class: "small_avatar" %>
-                <strong><%= link_to "#{current_user.first_name} #{current_user.last_name[0]}.", user_path(current_user.id) if current_user.first_name %></strong>
+                <strong><%= link_to "#{current_user.first_name} #{current_user.last_name[0]}.", user_path(current_user.id), class: "link_override" if current_user.first_name %></strong>
                 <br><%= current_user.location if current_user.location %>
                 <div style="clear: left;">
                   <hr>
-                  <%= link_to raw("<i class='user icon'></i> About Me"), user_path(current_user.id), class: "item" %>
-                  <%= link_to raw("<i class='file text outline icon'></i> Edit Profile"), edit_user_path(current_user.id), class: "item" %>
+                  <%= link_to raw("<i class='user icon'></i> About Me"), user_path(current_user.id), class: "item link_override" %><br>
+                  <%= link_to raw("<i class='file text outline icon'></i> Edit Profile"), edit_user_path(current_user.id), class: "item link_override" %>
                   <hr>
                   <%= link_to "Log Out", '/logout', class: 'ui mini red button clear_left', method: :delete %>           
                 </div>
