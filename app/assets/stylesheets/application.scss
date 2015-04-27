@@ -64,6 +64,28 @@ hr {
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 }
 
+.recent_businesses_container {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid black;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
+  margin-bottom: 10px;
+  position: relative;
+  padding: 10px;
+}
+
+.recent_business_avatar {
+  width: 90px;
+  position: absolute;
+  left: 10px;
+}
+
+.recent_business_content {
+  margin-left: 90px;
+}
+
 .review_user {
   position: absolute;
   left: 10px;

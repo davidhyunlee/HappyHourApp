@@ -21,7 +21,7 @@
     <h1 class="normalize"><%= @business.name %></h1>
     <p class="normalize"><%= "#{@business.reviews.count} reviews." %></p>
     <br><br>
-    <button class="test ui mini blue button">Add Photo</button>
+    <% if current_user %><button class="test ui mini blue button">Add Photo</button><% end %>
 
 
   </div>

@@ -2,10 +2,20 @@
 
 <div class="ui grid">
   <div class="nine wide column">
-  <h4 class="ui dividing header">Recently Added Businesses</h4>    
+  <h4 class="ui dividing header">Recently Added Businesses</h4>
+
+
+
+
+
 <% @businesses.order(created_at: :desc).limit(5).each do |business| %>
-  <%= business.name %>
-  <%= business.reviews.count %>
+<div class="recent_businesses_container">
+  <div class="recent_business_avatar"><%= image_tag business.photos.last.photo.url, class: "small_avatar" if business.photos.last %><%= image_tag "image_unavailable.png", class: "small_avatar" unless business.photos.last %></div>
+  <div class="recent_business_content">
+  <h5 class="ui dividing header"><%= link_to business.name, business_path(business.id) %> <%= "<span class='small_text'>(#{business.reviews.count} reviews)</span>".html_safe if business.reviews.count > 0 %></h5>
+  <%= "#{business.address} #{business.address_2}<br>#{business.city}, #{business.state} #{business.zip} ".html_safe %>
+  </div>
+</div>
 <% end %>
 
 
@@ -13,8 +23,17 @@
   <div class="seven wide column">
   <h4 class="ui dividing header">Recently Added Reviews</h4>
 <% @reviews.order(created_at: :desc).limit(5).each do |review| %>
-  
-  <%= review.business.name if review.business %><%= review.title %> <%= review.body %>
+
+<div class="recent_businesses_container">
+  <div class="recent_business_avatar"><%= image_tag review.user.photo.url, class: "small_avatar" if review.user.photo %><%= image_tag "image_unavailable.png", class: "small_avatar" unless review.user.photo %></div>
+  <div class="recent_business_content">
+    <div class="ui dividing header"><strong><%= link_to review.business.name, business_path(review.business.id) if review.business %></strong> <span class="small_text"><% if review.title %>"<% end %><%= review.title %><% if review.title %>"<% end %></span></div>
+
+    <span class="small_text"><%= simple_format(review.body) %></span>
+  </div>
+</div>
+
+
 <% end %>
 
   </div>
