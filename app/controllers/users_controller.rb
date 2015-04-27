@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 
 		if @user.update_attributes(userprofile_params)
-			redirect_to('/')
+			redirect_to user_path(@user.id)
 		else
 			render edit
 		end
