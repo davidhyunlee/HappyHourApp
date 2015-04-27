@@ -57,6 +57,14 @@
         <%= f.text_field :zip, class: "ui input", placeholder: "Los Angeles" %>          
         </div>
       </div>
+        <div class="field">
+        <label>Phone Number</label>
+        <%= f.telephone_field :phone, class: "ui input" %>          
+        </div>
+        <div class="field">
+        <label>Website URL</label>
+        <%= f.text_field :website, class: "ui input", placeholder: "http://" %>          
+        </div>   
       <%= f.submit "Update Business Details", class: "ui button" %>
       <% end %>
     </div>

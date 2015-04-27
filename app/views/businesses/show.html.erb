@@ -23,13 +23,13 @@
   <div class="sixteen wide column">
     
 <div class="map_info_container" style="width: 200px; background: #fff; border: 1px solid darkgray; overflow: hidden; float: right;">
-  <div id="map-canvas" style="width: 200px; height: 130px; background: #000;">f</div>
+  <div id="map-canvas" style="width: 200px; height: 130px; background: #000;"></div>
   <div id="address_details" style="width: 200px; padding: 6px;">
     <h5 class="normalize">Address:</h5>
     <%= @business.address %> <%= @business.address_2 %><br>
     <%= @business.city %>, <%= @business.state %> <%= @business.zip %><br><br>
-    <%= "<b>Phone:</b> #{@business.phone}".html_safe if @business.phone %><br>
-    <%= "<b>Website:</b> #{@business.website}".html_safe if @business.website %>
+    <%= "<b>Phone:</b> #{number_to_phone(@business.phone, area_code: true)}".html_safe if @business.phone %><br><br>
+    <%= "<b>Website:</b><br> #{@business.website}".html_safe if @business.website %>
   </div>
 </div>
 
@@ -37,6 +37,8 @@
 
     <h1 class="normalize"><%= @business.name %></h1>
     <p class="normalize"><%= "#{@business.reviews.count} reviews." %></p>
+    <br><br>
+    <button class="test ui mini blue button">Add Photo</button>
 
 
   </div>
@@ -74,14 +76,30 @@
   <div class="five wide column">
     <div class="business_detail_column">
       <div class="ui dividing header">Business Hours</div>
-      Monday: <% if @business.hour.mon_open %><%= @business.hour.mon_open.strftime('%l:%M%p') %><% else %>???<% end %> - <% if @business.hour.mon_close %><%= @business.hour.mon_close.strftime('%l:%M%p') %><% else %>???<% end %>
-
-      <div class="ui dividing header">Happy Hour</div>
+        <table>
+          <tr><td class="day_column">Monday:</td><td class="hours_column"><%= "#{@business.hour.mon_open.strftime('%l:%M%p')} - #{@business.hour.mon_close.strftime('%l:%M%p')}" if @business.hour.mon_open && @business.hour.mon_close %></td></tr>
+          <tr><td class="day_column">Tuesday:</td><td class="hours_column"><%= "#{@business.hour.tue_open.strftime('%l:%M%p')} - #{@business.hour.tue_close.strftime('%l:%M%p')}" if @business.hour.tue_open && @business.hour.tue_close %></td></tr>
+          <tr><td class="day_column">Wednesday:</td><td class="hours_column"><%= "#{@business.hour.wed_open.strftime('%l:%M%p')} - #{@business.hour.wed_close.strftime('%l:%M%p')}" if @business.hour.wed_open && @business.hour.wed_close %></td></tr>
+          <tr><td class="day_column">Thursday:</td><td class="hours_column"><%= "#{@business.hour.thu_open.strftime('%l:%M%p')} - #{@business.hour.thu_close.strftime('%l:%M%p')}" if @business.hour.thu_open && @business.hour.thu_close %></td></tr>
+          <tr><td class="day_column">Friday:</td><td class="hours_column"><%= "#{@business.hour.fri_open.strftime('%l:%M%p')} - #{@business.hour.fri_close.strftime('%l:%M%p')}" if @business.hour.fri_open && @business.hour.fri_close %></td></tr>
+          <tr><td class="day_column">Saturday:</td><td class="hours_column"><%= "#{@business.hour.sat_open.strftime('%l:%M%p')} - #{@business.hour.sat_close.strftime('%l:%M%p')}" if @business.hour.sat_open && @business.hour.sat_close %></td></tr>
+          <tr><td class="day_column">Sunday:</td><td class="hours_column"><%= "#{@business.hour.sun_open.strftime('%l:%M%p')} - #{@business.hour.sun_close.strftime('%l:%M%p')}" if @business.hour.sun_open && @business.hour.sun_close %></td></tr>
+        </table>
+      <div class="ui dividing header">Happy Hour Details</div>
+        <table>
+          <tr><td class="day_column">Monday:</td><td class="hours_column"><%= "#{@business.hour.mon_start.strftime('%l:%M%p')} - #{@business.hour.mon_end.strftime('%l:%M%p')}" if @business.hour.mon_start && @business.hour.mon_end %></td></tr>
+          <tr><td class="day_column">Tuesday:</td><td class="hours_column"><%= "#{@business.hour.tue_start.strftime('%l:%M%p')} - #{@business.hour.tue_end.strftime('%l:%M%p')}" if @business.hour.tue_start && @business.hour.tue_end %></td></tr>
+          <tr><td class="day_column">Wednesday:</td><td class="hours_column"><%= "#{@business.hour.wed_start.strftime('%l:%M%p')} - #{@business.hour.wed_end.strftime('%l:%M%p')}" if @business.hour.wed_start && @business.hour.wed_end %></td></tr>
+          <tr><td class="day_column">Thursday:</td><td class="hours_column"><%= "#{@business.hour.thu_start.strftime('%l:%M%p')} - #{@business.hour.thu_end.strftime('%l:%M%p')}" if @business.hour.thu_start && @business.hour.thu_end %></td></tr>
+          <tr><td class="day_column">Friday:</td><td class="hours_column"><%= "#{@business.hour.fri_start.strftime('%l:%M%p')} - #{@business.hour.fri_end.strftime('%l:%M%p')}" if @business.hour.fri_start && @business.hour.fri_end %></td></tr>
+          <tr><td class="day_column">Saturday:</td><td class="hours_column"><%= "#{@business.hour.sat_start.strftime('%l:%M%p')} - #{@business.hour.sat_end.strftime('%l:%M%p')}" if @business.hour.sat_start && @business.hour.sat_end %></td></tr>
+          <tr><td class="day_column">Sunday:</td><td class="hours_column"><%= "#{@business.hour.sun_start.strftime('%l:%M%p')} - #{@business.hour.sun_end.strftime('%l:%M%p')}" if @business.hour.sun_start && @business.hour.sun_end %></td></tr>
+        </table>
     </div>
   </div>
 </div>
 
-<button class="test ui button">Add Photo</button>
+
 
 <div class="ui modal">
  <i class="close icon"></i>

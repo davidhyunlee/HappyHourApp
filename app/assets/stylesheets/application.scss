@@ -51,6 +51,15 @@ body {
   width: 200px;
 }
 
+.day_column {
+  width: 100px;
+  font-weight: bold;
+}
+
+.hours_column {
+  width: 140px;
+}
+
 .body_container {
   width: 1037px;
   height: auto;
@@ -61,7 +70,7 @@ body {
 .container {
   width: 992px;
   margin: 0 auto;
-  border: 1px solid #9B9B9B;
+  border: 1px solid black;
   border-top-style: none;
   height: 90%;
   background: #fff;
@@ -124,7 +133,7 @@ body {
   width: 100%;
   min-height: 125px;
   background: #fff;
-  border: 1px solid darkgray;
+  border: 1px solid black;
   border-radius: 4px;
   padding: 10px;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(99,99,99,0.44);
