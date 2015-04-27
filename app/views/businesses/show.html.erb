@@ -4,7 +4,7 @@
     <%= link_to raw("<i class='home icon'></i> Home"), root_path, class: "item" %>
     <%= link_to raw("<i class='food icon'></i> Happy Hour Listing"), businesses_path, class: "item" %>
     <%= link_to raw("<i class='user icon'></i> Edit Business"), edit_business_path, class: "item" %>
-    <%= link_to raw("<i class='document icon'></i> Add Review"), new_business_review_path(@business), class: "item" %>
+    <%= link_to raw("<i class='file text outline icon'></i> Add Review"), new_business_review_path(@business), class: "item" %>
     <div class="right menu">
       <div class="item">
         <div class="ui icon input">
@@ -27,13 +27,16 @@
   <div id="address_details" style="width: 200px; padding: 6px;">
     <h5 class="normalize">Address:</h5>
     <%= @business.address %> <%= @business.address_2 %><br>
-    <%= @business.city %>, <%= @business.state %> <%= @business.zip %>
+    <%= @business.city %>, <%= @business.state %> <%= @business.zip %><br><br>
+    <%= "<b>Phone:</b> #{@business.phone}".html_safe if @business.phone %><br>
+    <%= "<b>Website:</b> #{@business.website}".html_safe if @business.website %>
   </div>
 </div>
 
     <div class="photo_business"><%= image_tag @business.photos[@business.photos.length-2].photo.url %></div>
 
     <h1 class="normalize"><%= @business.name %></h1>
+    <p class="normalize"><%= "#{@business.reviews.count} reviews." %></p>
 
 
   </div>

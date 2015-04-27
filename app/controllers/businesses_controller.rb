@@ -13,6 +13,7 @@ class BusinessesController < ApplicationController
    	else
     	@businesses = Business.order(:name).page(params[:page])
     end		
+
 	end
 
 	def new

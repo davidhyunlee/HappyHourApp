@@ -23,28 +23,27 @@
   </div>
 </div>
 
-
-<%= form_tag(businesses_path, method: 'get') do %>
-
-  Filter: <%= select_tag :filter, options_for_select(["name"]) %>: <%= text_field_tag :query %>
-  <%= submit_tag "Search" %>
-
-<% end %>
-
-
 <% @businesses.each do |business| %>
 
 <div class="business_index_container">
-  <p style="float: right">1234 Milbank St<br>Studio City</p>
-  <div class="business_index_avatar_container" style="background: #fff url('<%= business.photos[0].photo.url if business.photos[0] %>'); background-size: 100px 100px;"></div>
+  <p style="float: right"><strong>Address:</strong><br><%= business.address if business.address %>, <%= business.address_2 if business.address_2 %><br><%= business.city %>, <%= business.state %> <%= business.zip %><br><br><%= "<b>Phone:</b> #{business.phone}".html_safe if business.phone %></p>
+  <div class="business_index_avatar_container" style="background: #fff url('<%= business.photos[0].photo.url if business.photos[0] %>'); background-size: 100px 100px;"><%= image_tag "image_unavailable.png", class: "b_index_image_unavail" unless business.photos[0] %></div>
   <h4 style="display: inline"><%= link_to business.name, business_path(business) %></h4>
   <p class="normalize"><%= "#{business.reviews.count} reviews" if business.reviews.count > 0 %><%= "No reviews yet." if business.reviews.count == 0 %></p>
-  <p class="normalize">Happy Hour Today: 1:00AM - 1:00PM</p>
 
+  <% if business.reviews.count > 0 %>
   <div class="review_snippet_container">
-    <div class="business_index_user_avatar" style="width: 80px; height: 80px; background: #fff url('<%= business.reviews.last.user.photo.url if business.reviews.last %>'); background-size: 80px 80px; position: absolute; left: 0;"></div>
+
+    <% if business.reviews.last.user.photo %>
+        <div class="business_index_user_avatar" style="width: 80px; height: 80px; background: #fff url('<%= business.reviews.last.user.photo.url if business.reviews.last %>'); background-size: 80px 80px; position: absolute; left: 5px;"></div>
+    <% else %>
+        <div class="business_index_user_avatar" style="width: 80px; height: 80px; background: #000; background-size: 80px 80px; position: absolute; left: 5px;"><%= image_tag "unknown_user.png", class: "b_index_avatar_unknown" %></div>
+    <%end%>
+
+
     <div style="margin-left: 90px; height: 80px; display: inline-block;"><%= simple_format(business.reviews.last.body) if business.reviews.last %></div>
   </div>
+  <% end %>
 
 </div>
 

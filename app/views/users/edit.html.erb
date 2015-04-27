@@ -1,19 +1,63 @@
-<%= form_for @user do |f| %>
+<div class="ui two column grid">
+	<div class="column">
+	<%= image_tag @user.photo.url if @user.photo %>
+	<%= form_for @user do |f| %>
 
-		<%= f.label :first_name, class: "ui input" %><%= f.text_field :first_name, class: "ui input" %>
-		<%= f.label :last_name, class: "ui input"  %><%= f.text_field :last_name, class: "ui input"  %>
-		<%= f.label :username, class: "ui input"  %><%= f.text_field :username, class: "ui input"  %>
-		<%= f.label :location, class: "ui input"  %><%= f.text_field :location, class: "ui input"  %>
-		<%= f.label :hometown, class: "ui input"  %><%= f.text_field :hometown, class: "ui input"  %>
-		<%= f.label :nickname, class: "ui input"  %><%= f.text_field :nickname, class: "ui input"  %>
-		<%= f.label :headline, class: "ui input"  %><%= f.text_field :headline, class: "ui input"  %>
-		<%= f.label :website, class: "ui input"  %><%= f.text_field :website, class: "ui input"  %>
 		<%= f.label :photo, class: "ui input"  %><%= f.file_field :photo, class: "ui input"  %>
-		<%= f.label :password, class: "ui input"  %><%= f.text_field :password, class: "ui input"  %>
-		<%= f.label :password_confirmation, class: "ui input"  %><%= f.text_field :password_confirmation, class: "ui input"  %>
 
-	<%= f.submit "Update Profile", class: "ui input" %>
+	<%= f.submit "Upload Photo", class: "ui green button" %>
 
-<% end %>
+	<% end %>
+
+	</div>
+	<div class="column">
+		<div class="ui small form segment">
+		<h5 class="ui dividing header">Profile Details</h5>
+		<%= form_for @user do |f| %>
+			<div class="field">
+				<label>First Name</label><%= f.text_field :first_name, class: "ui input"  %>
+			</div>
+			<div class="field">
+				<label>Last Name</label><%= f.text_field :last_name, class: "ui input"  %>
+			</div>
+			<div class="field">
+				<label>Username</label><%= f.text_field :username, class: "ui input"  %>
+			</div>
+			<div class="field">
+				<label>Location</label><%= f.text_field :location, class: "ui input"  %>
+			</div>
+			<div class="field">
+				<label>Hometown</label><%= f.text_field :hometown, class: "ui input"  %>
+			</div>
+			<div class="field">
+				<label>Nickname</label><%= f.text_field :nickname, class: "ui input"  %>
+			</div>
+			<div class="field">
+				<label>Headline / Quote</label><%= f.text_field :headline, class: "ui input"  %>
+			</div>
+			<div class="field">
+				<label>Website</label><%= f.text_field :website, class: "ui input"  %>
+			</div>
+			<%= f.submit "Update Profile", class: "ui blue button" %>
+		<% end %>
+		</div>
+
+		<div class="ui small form segment">
+		<h5 class="ui dividing header">Change Password</h5>
+		<%= form_for @user do |f| %>
+			<div class="field">
+				<label>New Password</label><%= f.password_field :password, class: "ui input"  %>
+			</div>
+			<div class="field">
+				<label>Confirm Password</label><%= f.password_field :password_confirmation, class: "ui input"  %>
+			</div>
+			<%= f.submit "Update Password", class: "ui blue button" %>
+		<% end %>
+		</div>
+
+	</div>
+</div>
+
+
 
 

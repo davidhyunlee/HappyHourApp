@@ -126,10 +126,12 @@
         </div>
       </div>
       <%= f.submit "Update Business Hours", class: "ui button" %>
+      <% end %>
       </div>
 
     <div class="ui small form segment">
       <h4 class="ui dividing header">Happy Hour</h4>
+      <%= form_for [@business, @hours] do |f| %>
       <div class="two fields"> <!-- Monday -->
         <div class="field">
           <h5 class="ui center aligned dividing header">Start</h5>
