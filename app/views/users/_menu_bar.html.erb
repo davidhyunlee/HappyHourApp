@@ -6,7 +6,7 @@
     <%= link_to raw("<i class='plus icon'></i> Add Business"), new_business_path, class: "item" if current_user.admin? %>
     <% end %>
     <div class="right menu">
-    <%= link_to raw("<i class='user icon'></i> Back to Profile"), user_path(current_user.id), class: "item" if current_user && params[:action] == 'edit' %>
+    <%= link_to raw("<i class='arrow left icon'></i> Back to Profile"), user_path(current_user.id), class: "item" if current_user && params[:action] == 'edit' %>
     <%= link_to raw("<i class='user icon'></i> Edit Profile"), edit_user_path(current_user.id), class: "item" if current_user && params[:action] == 'show' %>
     </div>
   </div>
