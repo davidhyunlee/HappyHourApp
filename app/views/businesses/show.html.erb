@@ -50,6 +50,7 @@
   <div class="five wide column">
     <div class="business_detail_column">
       <div class="ui dividing header">Business Hours</div>
+        <% if @business.hour %>
         <table>
           <tr><td class="day_column">Monday:</td><td class="hours_column"><%= "#{@business.hour.mon_open.strftime('%l:%M%p')} - #{@business.hour.mon_close.strftime('%l:%M%p')}" if @business.hour.mon_open && @business.hour.mon_close %></td></tr>
           <tr><td class="day_column">Tuesday:</td><td class="hours_column"><%= "#{@business.hour.tue_open.strftime('%l:%M%p')} - #{@business.hour.tue_close.strftime('%l:%M%p')}" if @business.hour.tue_open && @business.hour.tue_close %></td></tr>
@@ -59,7 +60,11 @@
           <tr><td class="day_column">Saturday:</td><td class="hours_column"><%= "#{@business.hour.sat_open.strftime('%l:%M%p')} - #{@business.hour.sat_close.strftime('%l:%M%p')}" if @business.hour.sat_open && @business.hour.sat_close %></td></tr>
           <tr><td class="day_column">Sunday:</td><td class="hours_column"><%= "#{@business.hour.sun_open.strftime('%l:%M%p')} - #{@business.hour.sun_close.strftime('%l:%M%p')}" if @business.hour.sun_open && @business.hour.sun_close %></td></tr>
         </table>
+        <% else %>
+          Business Hour Data N/A
+        <% end %>
       <div class="ui dividing header">Happy Hour Details</div>
+        <% if @business.hour %>
         <table>
           <tr><td class="day_column">Monday:</td><td class="hours_column"><%= "#{@business.hour.mon_start.strftime('%l:%M%p')} - #{@business.hour.mon_end.strftime('%l:%M%p')}" if @business.hour.mon_start && @business.hour.mon_end %></td></tr>
           <tr><td class="day_column">Tuesday:</td><td class="hours_column"><%= "#{@business.hour.tue_start.strftime('%l:%M%p')} - #{@business.hour.tue_end.strftime('%l:%M%p')}" if @business.hour.tue_start && @business.hour.tue_end %></td></tr>
@@ -69,6 +74,9 @@
           <tr><td class="day_column">Saturday:</td><td class="hours_column"><%= "#{@business.hour.sat_start.strftime('%l:%M%p')} - #{@business.hour.sat_end.strftime('%l:%M%p')}" if @business.hour.sat_start && @business.hour.sat_end %></td></tr>
           <tr><td class="day_column">Sunday:</td><td class="hours_column"><%= "#{@business.hour.sun_start.strftime('%l:%M%p')} - #{@business.hour.sun_end.strftime('%l:%M%p')}" if @business.hour.sun_start && @business.hour.sun_end %></td></tr>
         </table>
+        <% else %>
+          Happy Hour Data N/A
+        <% end %>
     </div>
   </div>
 </div>
