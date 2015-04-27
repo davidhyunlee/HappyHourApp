@@ -1,15 +1,4 @@
-<div class="menubar">
-  <div class="ui secondary menu">
-    <%= link_to raw("<i class='home icon'></i> Home"), root_path, class: "active item" %>
-    <%= link_to raw("<i class='food icon'></i> Happy Hour Listing"), businesses_path, class: "item" %>
-    <% if current_user %>
-    <%= link_to raw("<i class='food icon'></i> Add Business"), new_business_path, class: "item" if current_user.admin? %>
-    <% end %>
-    <div class="right menu">
-    <%= link_to raw("<i class='user icon'></i> About Me"), user_path(current_user.id), class: "item" if current_user %>
-    </div>
-  </div>
-</div>
+<%= render 'pages/menu_bar' %>
 
 <div class="ui grid">
   <div class="nine wide column">

@@ -1,29 +1,5 @@
-<div class="menubar">
-  <div class="ui secondary  menu">
-    <a class="active item">
-      <i class="home icon"></i> Home
-    </a>
-    <a class="item">
-      <i class="mail icon"></i> Messages
-    </a>
-    <a class="item">
-      <i class="user icon"></i> Friends
-    </a>
-    <div class="right menu">
-      <div class="item">
-        <div class="ui icon input">
-          <input type="text" placeholder="Search...">
-          <i class="search link icon"></i>
-        </div>
-      </div>
-      <a class="ui item">
-        Logout
-      </a>
-    </div>
-  </div>
-</div>
+<%= render 'businesses/menu_bar' %>
 
-<!--  -->
 <div class="ui center aligned dividing header"><%= link_to @business.name, business_path %></div>
 
 <div class="ui two column grid">
