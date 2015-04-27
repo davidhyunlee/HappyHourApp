@@ -17,14 +17,14 @@
 @import "semantic-ui";
 
 body {
-  background: #efefef url('site_bg.png');
+  background: #efefef image_path('site_bg.png');
 }
 
 .header_container {
   width: 1037px;
   height: 62px;
   margin: 0 auto;
-  background: #000 url('header_bg.png') no-repeat;
+  background: #000 image_path('header_bg.png') no-repeat;
   border: 1px solid black;
   box-sizing: border-box;
 }
@@ -35,7 +35,7 @@ body {
 }
 
 .ribbon {
-  background: url('ribbon_bg.png') repeat-x;
+  background: image_path('ribbon_bg.png') repeat-x;
   position: absolute;
   top: 0;
   width: 100%;
@@ -97,7 +97,7 @@ hr {
   width: 1037px;
   height: auto;
   margin: 0 auto;
-  background: url('header_shadow.png') no-repeat;
+  background: image_path('header_shadow.png') no-repeat;
 }
 
 .container {
@@ -111,7 +111,7 @@ hr {
 }
 
 .footer_container {
-  background: url('footer_bg.png');
+  background: image_path('footer_bg.png');
   background-position: center;
   width: 1145px;
   height: 300px;
@@ -267,8 +267,3 @@ hr {
   padding: 0;
   margin: 0;
 }
-
-/*#map-canvas {
-  height: 250px;
-  width: 250px;
-}*/

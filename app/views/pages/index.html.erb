@@ -15,7 +15,8 @@
   <div class="nine wide column">
   <h4 class="ui dividing header">Recently Added Businesses</h4>    
 <% @businesses.order(created_at: :desc).limit(5).each do |business| %>
-  <%= business %>
+  <%= business.name %>
+  <%= business.reviews.count %>
 <% end %>
 
 
