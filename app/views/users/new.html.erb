@@ -40,3 +40,14 @@
   <i class="icon help"></i>
   Already signed up? <%= link_to "Login here", '/login' %> instead.
 </div>
+
+
+      <div id="user-widget" style="width: 300px; margin: 0 auto;">
+        <% if current_user %>
+          Welcome <strong><%= current_user.name %></strong>!
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <% else %>
+          <center>- or -</center><br>
+          <center><%= link_to "Sign Up with Facebook", "/auth/facebook", id: "sign_in", class: "ui facebook button" %></center>
+        <% end %>
+      </div>
